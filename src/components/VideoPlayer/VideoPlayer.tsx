@@ -20,6 +20,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [currentVideoTime, setCurrentVideoTime] = useState<number>(0);
   const poster = `${previewImageLink}/lesson-${order}.webp`;
+  const isUnlocked = status === "unlocked";
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -43,6 +44,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const handleTimeUpdate = () => {
     const currentTime = videoRef.current?.currentTime || currentVideoTime;
+
     if (currentTime !== 0) {
       localStorage.setItem(videoId, String(currentTime));
       setCurrentVideoTime(currentTime);
@@ -55,7 +57,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       ref={videoRef}
       controls
       onTimeUpdate={handleTimeUpdate}
-      poster={status === "unlocked" ? poster : LockedVideoImg}
+      poster={isUnlocked ? poster : LockedVideoImg}
     />
   );
 };

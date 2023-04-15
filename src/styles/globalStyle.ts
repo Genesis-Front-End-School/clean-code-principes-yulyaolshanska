@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
- 
   html {
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -12,8 +11,6 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     height: auto;
   }
-
-  
 
   ul {
     padding: 0;
@@ -30,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   p {
     margin: 0;
   }
+  
   a {
     text-decoration: none;
     color: inherit;

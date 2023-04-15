@@ -59,7 +59,7 @@ export const CourseItem: React.FC<ICourse> = ({
                 <SkillItem key={skill}> {skill}</SkillItem>
               ))}
           </SkillsList>
-          <TagItem key={id}>#{tags}</TagItem>
+          <TagItem>#{tags}</TagItem>
         </DetailsBox>
       </NavLink>
     </Card>

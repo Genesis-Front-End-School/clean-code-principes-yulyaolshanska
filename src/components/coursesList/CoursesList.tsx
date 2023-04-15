@@ -1,6 +1,6 @@
-import { CourseItem } from "components/courseItem/CourseItem";
-import Loader from "components/Loader/Loader";
 import React, { useEffect, useState } from "react";
+import { CourseItem } from "components/CourseItem/CourseItem";
+import Loader from "components/Loader/Loader";
 import {
   Container,
   CourseList,
@@ -14,12 +14,15 @@ type IProps = {
   courses: [];
 };
 
+const FIRST_PAGE = 1;
+const LAST_PAGE = 3;
+
 export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentCourses, setCurrentCourses] = useState(courses.slice(0, 10));
+  const [currentCourses, setCurrentCourses] = useState([]);
 
   useEffect(() => {
-    if (currentPage === 1) {
+    if (currentPage === FIRST_PAGE) {
       setCurrentCourses(courses.slice(0, 10));
     }
   }, [courses, currentPage]);
@@ -87,15 +90,15 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
       {!isLoading && currentCourses?.length !== 0 && (
         <PaginationButtonContainer>
           <PaginationButton
-            active={currentPage > 1}
-            disabled={currentPage <= 1}
+            active={currentPage > FIRST_PAGE}
+            disabled={currentPage <= FIRST_PAGE}
             onClick={handlePrevClick}
           >
             Prev
           </PaginationButton>
           <PaginationButton
-            active={currentPage !== 3}
-            disabled={currentPage === 3}
+            active={currentPage !== LAST_PAGE}
+            disabled={currentPage === LAST_PAGE}
             onClick={handleNextClick}
           >
             Next

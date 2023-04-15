@@ -10,10 +10,13 @@ interface ILesson {
   title: string;
   order: number;
 }
+
 interface ICourse {
   courses: [];
 }
+
 type CoursesResponse = ICourse;
+
 interface ICourseDetail {
   title: string;
   containsLockedLessons: boolean;
@@ -22,17 +25,20 @@ interface ICourseDetail {
   meta: object;
   rating: number;
 }
+
 type CourseResponse = ICourseDetail;
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://api.wisey.app/api/v1/core/preview-courses",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
+
     if (token) {
       headers.set("Access-Control-Allow-Origin", "*");
       headers.set("authorization", `Bearer ${token}`);
       headers.set("Access-Control-Request-Headers", "authorization");
     }
+
     return headers;
   },
 });

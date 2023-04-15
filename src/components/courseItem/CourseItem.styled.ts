@@ -6,14 +6,14 @@ export const Card = styled.li`
   overflow: hidden;
   box-shadow: rgb(24 39 75 / 12%) 0px 8px 18px -6px,
     rgb(24 39 75 / 12%) 0px 12px 42px -4px;
-
-  @media ${(p) => p.theme.media.tablet} {
-    flex-basis: calc(33.33% - 24);
-  }
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus {
     transform: scale(1.03);
+  }
+  @media ${(p) => p.theme.media.tablet} {
+    flex-basis: calc(33.33% - 24);
   }
 `;
 
@@ -78,6 +78,7 @@ export const SkillItem = styled.li`
   padding-left: 24px;
   margin-bottom: 6px;
   display: list-item;
+
   &::first-letter {
     text-transform: capitalize;
   }

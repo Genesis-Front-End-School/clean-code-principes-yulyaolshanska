@@ -1,4 +1,4 @@
-import { CoursesList } from "components/coursesList/CoursesList";
+import { CoursesList } from "components/CoursesList/CoursesList";
 import { useAppDispatch } from "helpers/hooks/hooks";
 import React, { useEffect } from "react";
 import { useGetTokenQuery } from "redux/auth/authApi";
@@ -20,9 +20,9 @@ const CoursesPage: React.FC = () => {
   }, [data, getCourses]);
 
   return (
-    <div>
+    <>
       <CoursesList isLoading={isLoading} courses={courses} />
-    </div>
+    </>
   );
 };
 

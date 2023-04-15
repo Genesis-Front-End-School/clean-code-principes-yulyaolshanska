@@ -74,6 +74,7 @@ export const PaginationButtonContainer = styled.div`
 export const PaginationButton = styled(StyledButton)`
   border-radius: 20%;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     transform: ${(p) => (p.active ? "scale(1.1)" : "scale(1.0)")};
   }
