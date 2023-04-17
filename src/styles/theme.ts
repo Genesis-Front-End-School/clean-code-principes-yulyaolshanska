@@ -1,9 +1,10 @@
 const theme = {
   colors: {
     background: "#E5E5E5",
-    backdrop: " #11111199",
-    accent: " #6648c8",
+    backdrop: "#11111199",
+    accent: "#6648c8",
     text: "#111321",
+    title: "#312ee2",
     primaryText: "#111111",
     primaryBtnText: "#111111",
     secondatyBtnText: "#FFFFFF",

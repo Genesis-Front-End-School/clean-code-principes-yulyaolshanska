@@ -15,43 +15,26 @@ type IProps = {
 };
 
 const FIRST_PAGE = 1;
-const LAST_PAGE = 3;
+const COURSES_PER_PAGE = 10;
 
 export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCourses, setCurrentCourses] = useState([]);
+  const LAST_PAGE = currentCourses.length < 10;
 
   useEffect(() => {
-    if (currentPage === FIRST_PAGE) {
-      setCurrentCourses(courses.slice(0, 10));
-    }
+    const visitedPages = (currentPage - 1) * COURSES_PER_PAGE;
+    setCurrentCourses(
+      courses.slice(visitedPages, visitedPages + COURSES_PER_PAGE)
+    );
   }, [courses, currentPage]);
 
-  const getCurrentCourses = (page: number) => {
-    switch (page) {
-      case 1:
-        setCurrentCourses(courses.slice(0, 10));
-        break;
-      case 2:
-        setCurrentCourses(courses.slice(10, 20));
-        break;
-      case 3:
-        setCurrentCourses(courses.slice(20, 30));
-        break;
-      default:
-        setCurrentCourses(courses.slice(0, 10));
-        break;
-    }
-  };
-
-  const handlePrevClick = async () => {
+  const handlePrevClick = () => {
     setCurrentPage(currentPage - 1);
-    getCurrentCourses(currentPage - 1);
   };
 
-  const handleNextClick = async () => {
+  const handleNextClick = () => {
     setCurrentPage(currentPage + 1);
-    getCurrentCourses(currentPage + 1);
   };
 
   return (
@@ -97,8 +80,8 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
             Prev
           </PaginationButton>
           <PaginationButton
-            active={currentPage !== LAST_PAGE}
-            disabled={currentPage === LAST_PAGE}
+            active={!LAST_PAGE}
+            disabled={LAST_PAGE}
             onClick={handleNextClick}
           >
             Next

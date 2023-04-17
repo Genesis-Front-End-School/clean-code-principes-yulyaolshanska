@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { MdArrowBackIos } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
+import theme from "styles/theme";
 
 interface LessonTitleProps extends React.HTMLProps<HTMLHeadingElement> {
   active?: boolean;
@@ -80,13 +81,14 @@ export const TitleBox = styled.div`
 export const LessonTitle = styled.h2<LessonTitleProps>`
   margin-right: 10px;
   font-weight: 500;
-  color: ${(p) => (p.active ? "#312ee2" : "inherit")};
+  color: ${(p) => (p.active ? theme.colors.title : "inherit")};
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     transform: scale(1.03);
   }
 `;
+
 export const LessonLink = styled.a``;
 
 export const CurrentLessContainer = styled.div`

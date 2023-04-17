@@ -44,8 +44,10 @@ export const ErrorBox = styled.div`
 `;
 export const HomeLink = styled(Link)`
   color: #ffffff;
-  display: flex;
-
+  display: block;
+  padding: 20px;
+  height: 100%;
+  /* width: 100%; */
   @media ${(p) => p.theme.media.mobile} {
     font-size: 28px;
   }
@@ -56,10 +58,10 @@ export const HomeLink = styled(Link)`
 `;
 
 export const HomeLinkBox = styled.div`
-  background-color: #f59256;
-  height: 70px;
-  width: 100px;
-  padding: 10px;
+  background-color: ${(p) => p.theme.colors.accent};
+  display: block;
+  height: 30px;
+  width: 40px;
   justify-content: center;
   align-items: center;
   padding: 30px;
@@ -76,7 +78,7 @@ export const HomeLinkBox = styled.div`
 
 export const Error = styled.span`
   display: block;
-  color: #f59256;
+  color: ${(p) => p.theme.colors.accent};
   @media ${(p) => p.theme.media.mobile} {
     font-size: 32px;
   }

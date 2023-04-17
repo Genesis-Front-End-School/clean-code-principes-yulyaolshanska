@@ -1,4 +1,4 @@
-import { CoursesList } from "components/CoursesList/CoursesList";
+import { CoursesList } from "../../components/CoursesList/CoursesList";
 import { useAppDispatch } from "helpers/hooks/hooks";
 import React, { useEffect } from "react";
 import { useGetTokenQuery } from "redux/auth/authApi";
