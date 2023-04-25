@@ -1,10 +1,10 @@
 #### https://github.com/MemeBattle/monorepo
 
 1.  Single Responsibility Principle (SRP) in the Card class from the Ligretto repository:
-    `
-    public class Card {
-    private Suit suit;
-    private Rank rank;
+
+        `public class Card {
+            private Suit suit;
+            private Rank rank;
 
             public Card(Suit suit, Rank rank) {
                 this.suit = suit;
@@ -30,8 +30,8 @@
 
 2.  Single Responsibility Principle. The Deck class is responsible for creating and managing a deck of cards:
 
-    `public class Deck {
-    private List<Card> cards;
+        `public class Deck {
+        private List<Card> cards;
 
         public Deck() {
             this.cards = new ArrayList<>();
@@ -62,9 +62,9 @@
     In this implementation, the Deck class has a single responsibility of creating and managing a deck of cards. It has methods for shuffling the deck, dealing a card, and getting the number of cards left in the deck.
 
 3.  Creator pattern in the Game class:
-    `
-    public abstract class Game {
-    // ...
+
+        `public abstract class Game {
+        // ...
 
             protected void createPlayers(int numPlayers) {
                 for (int i = 0; i < numPlayers; i++) {
@@ -102,9 +102,9 @@
 
 5.  Dependency Inversion Principle (DIP):
 
-    `public class GameController {
-    private Game game;
-    private UserInterface ui;
+            `public class GameController {
+            private Game game;
+            private UserInterface ui;
 
                public GameController(Game game, UserInterface ui) {
                    this.game = game;
@@ -141,8 +141,8 @@
 
 7.  Template Method pattern:
 
-    `public abstract class Game {
-    // ...
+        `public abstract class Game {
+        // ...
 
         public final void play() {
             setup();
@@ -177,22 +177,22 @@
 
 8.  Low Coupling pattern in the GameController class:
 
-`public class GameController {
-private Game game;
-private UserInterface ui;
+        `public class GameController {
+        private Game game;
+        private UserInterface ui;
 
-    public GameController(Game game, UserInterface ui) {
-        this.game = game;
-        this.ui = ui;
-    }
+        public GameController(Game game, UserInterface ui) {
+            this.game = game;
+            this.ui = ui;
+        }
 
-    public void play() {
-        ui.showWelcomeMessage();
-        game.play();
-        ui.showEndOfGameMessage();
-    }
+        public void play() {
+            ui.showWelcomeMessage();
+            game.play();
+            ui.showEndOfGameMessage();
+        }
 
-}
-`
+        }
+        `
 
 In this implementation, the GameController class has minimal dependencies on other classes. It depends only on the Game class and the UserInterface interface
