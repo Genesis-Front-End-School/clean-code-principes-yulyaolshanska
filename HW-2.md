@@ -1,8 +1,8 @@
 #### https://github.com/MemeBattle/monorepo
 
 1.  Single Responsibility Principle (SRP) in the Card class from the Ligretto repository:
-    `
-    public class Card {
+    
+    `public class Card {
     private Suit suit;
     private Rank rank;
 
