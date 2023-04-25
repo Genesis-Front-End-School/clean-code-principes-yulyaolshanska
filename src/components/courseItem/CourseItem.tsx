@@ -52,13 +52,16 @@ export const CourseItem: React.FC<ICourse> = ({
             <LessonsCount>Lessons: {lessonsCount}</LessonsCount>
             <Rating>Rating: {rating}</Rating>
           </Box>
-          {skills.length > 0 && <Skills>Skills:</Skills>}
-          <SkillsList>
-            {skills.length > 0 &&
-              skills.map((skill: string) => (
-                <SkillItem key={skill}> {skill}</SkillItem>
-              ))}
-          </SkillsList>
+          {skills.length > 0 && (
+            <>
+              <Skills>Skills:</Skills>
+              <SkillsList>
+                {skills.map((skill: string) => (
+                  <SkillItem key={skill}> {skill}</SkillItem>
+                ))}
+              </SkillsList>
+            </>
+          )}
           <TagItem>#{tags}</TagItem>
         </DetailsBox>
       </NavLink>

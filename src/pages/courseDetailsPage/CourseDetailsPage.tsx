@@ -50,10 +50,10 @@ const CourseDetailsPage: React.FC = () => {
   const handleLessonClick = (lesson: LessonseDetails) => {
     if (lesson.status !== LOCKED) {
       setIsVideoOpen(true);
-      setCurrentLesson(lesson);
     } else {
       setIsVideoOpen(false);
     }
+    setCurrentLesson(lesson);
   };
 
   return (

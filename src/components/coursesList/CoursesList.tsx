@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { CourseItem } from "components/CourseItem/CourseItem";
 import Loader from "components/Loader/Loader";
-import {
-  Container,
-  CourseList,
-  PaginationButton,
-  PaginationButtonContainer,
-  Title,
-} from "./CoursesList.styled";
+import { Container, CourseList, Title } from "./CoursesList.styled";
+import { Pagination } from "components/Pagination/Pagination";
 
 type IProps = {
   isLoading: boolean;
   courses: [];
 };
 
-const FIRST_PAGE = 1;
 const COURSES_PER_PAGE = 10;
 
 export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
@@ -29,12 +23,8 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
     );
   }, [courses, currentPage]);
 
-  const handlePrevClick = () => {
-    setCurrentPage(currentPage - 1);
-  };
-
-  const handleNextClick = () => {
-    setCurrentPage(currentPage + 1);
+  const handlePaginationClick = (currentPage: number) => {
+    setCurrentPage(currentPage);
   };
 
   return (
@@ -71,22 +61,10 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
         )}
       </CourseList>
       {!isLoading && currentCourses?.length !== 0 && (
-        <PaginationButtonContainer>
-          <PaginationButton
-            active={currentPage > FIRST_PAGE}
-            disabled={currentPage <= FIRST_PAGE}
-            onClick={handlePrevClick}
-          >
-            Prev
-          </PaginationButton>
-          <PaginationButton
-            active={!LAST_PAGE}
-            disabled={LAST_PAGE}
-            onClick={handleNextClick}
-          >
-            Next
-          </PaginationButton>
-        </PaginationButtonContainer>
+        <Pagination
+          onPaginationClick={handlePaginationClick}
+          isLastPage={LAST_PAGE}
+        />
       )}
     </Container>
   );

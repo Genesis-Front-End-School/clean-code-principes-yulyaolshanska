@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useGetTokenQuery } from "redux/auth/authApi";
 import { setToken } from "redux/auth/authSlice";
 import { coursesApi } from "redux/coursesApi";
+import Loader from "components/Loader/Loader";
 
 const CoursesPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +22,11 @@ const CoursesPage: React.FC = () => {
 
   return (
     <>
-      <CoursesList isLoading={isLoading} courses={courses} />
+      {!isLoading ? (
+        <CoursesList isLoading={isLoading} courses={courses} />
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
