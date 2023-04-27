@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { CourseItem } from "components/CourseItem/CourseItem";
 import Loader from "components/Loader/Loader";
 import { Container, CourseList, Title } from "./CoursesList.styled";
 import { Pagination } from "components/Pagination/Pagination";
+import { COURSES_PER_PAGE } from "constants/pagination";
 
 type IProps = {
   isLoading: boolean;
   courses: [];
 };
 
-const COURSES_PER_PAGE = 10;
-
 export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCourses, setCurrentCourses] = useState([]);
-  const LAST_PAGE = currentCourses.length < 10;
 
   useEffect(() => {
     const visitedPages = (currentPage - 1) * COURSES_PER_PAGE;
@@ -22,6 +20,10 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
       courses.slice(visitedPages, visitedPages + COURSES_PER_PAGE)
     );
   }, [courses, currentPage]);
+
+  const totalPageCount = useMemo(() => {
+    return Math.ceil(courses.length / COURSES_PER_PAGE);
+  }, [courses.length]);
 
   const handlePaginationClick = (currentPage: number) => {
     setCurrentPage(currentPage);
@@ -63,7 +65,7 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
       {!isLoading && currentCourses?.length !== 0 && (
         <Pagination
           onPaginationClick={handlePaginationClick}
-          isLastPage={LAST_PAGE}
+          totalPageCount={totalPageCount}
         />
       )}
     </Container>
