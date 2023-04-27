@@ -4,10 +4,11 @@ import Loader from "components/Loader/Loader";
 import { Container, CourseList, Title } from "./CoursesList.styled";
 import { Pagination } from "components/Pagination/Pagination";
 import { COURSES_PER_PAGE } from "constants/pagination";
+import { ICourse } from "types/type";
 
 interface CoursesListProps {
   isLoading: boolean;
-  courses: [];
+  courses: ICourse[];
 }
 
 export const CoursesList: React.FC<CoursesListProps> = ({
@@ -15,7 +16,7 @@ export const CoursesList: React.FC<CoursesListProps> = ({
   courses,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentCourses, setCurrentCourses] = useState([]);
+  const [currentCourses, setCurrentCourses] = useState<ICourse[]>([]);
 
   useEffect(() => {
     const visitedPages = (currentPage - 1) * COURSES_PER_PAGE;

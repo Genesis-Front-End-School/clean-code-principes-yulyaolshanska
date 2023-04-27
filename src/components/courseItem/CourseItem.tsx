@@ -15,7 +15,7 @@ import {
 } from "./CourseItem.styled";
 
 interface IMeta {
-  courseVideoPreview: object;
+  courseVideoPreview?: object;
   skills?: string[];
 }
 
@@ -25,8 +25,8 @@ interface CourseProps {
   lessonsCount: number;
   rating: number;
   title: string;
-  tags: [];
-  meta: IMeta;
+  tags?: [];
+  meta?: IMeta;
   image: string;
 }
 
@@ -35,7 +35,7 @@ export const CourseItem: React.FC<CourseProps> = ({
   lessonsCount,
   rating,
   title,
-  tags,
+  tags = [],
   meta,
   image,
 }) => {
