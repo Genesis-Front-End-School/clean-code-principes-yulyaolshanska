@@ -5,12 +5,15 @@ import { Container, CourseList, Title } from "./CoursesList.styled";
 import { Pagination } from "components/Pagination/Pagination";
 import { COURSES_PER_PAGE } from "constants/pagination";
 
-type IProps = {
+interface CoursesListProps {
   isLoading: boolean;
   courses: [];
-};
+}
 
-export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
+export const CoursesList: React.FC<CoursesListProps> = ({
+  isLoading,
+  courses,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCourses, setCurrentCourses] = useState([]);
 

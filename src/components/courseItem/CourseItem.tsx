@@ -19,7 +19,7 @@ interface IMeta {
   skills?: string[];
 }
 
-interface ICourse {
+interface CourseProps {
   id: string;
   description: string;
   lessonsCount: number;
@@ -30,7 +30,7 @@ interface ICourse {
   image: string;
 }
 
-export const CourseItem: React.FC<ICourse> = ({
+export const CourseItem: React.FC<CourseProps> = ({
   id,
   lessonsCount,
   rating,
