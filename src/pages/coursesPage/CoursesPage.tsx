@@ -23,7 +23,7 @@ const CoursesPage: React.FC = () => {
   return (
     <>
       {!isLoading ? (
-        <CoursesList isLoading={isLoading} courses={courses} />
+        <CoursesList courses={courses} />
       ) : (
         <Loader />
       )}

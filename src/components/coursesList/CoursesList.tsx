@@ -1,20 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { CourseItem } from "components/CourseItem/CourseItem";
-import Loader from "components/Loader/Loader";
 import { Container, CourseList, Title } from "./CoursesList.styled";
 import { Pagination } from "components/Pagination/Pagination";
 import { COURSES_PER_PAGE } from "constants/pagination";
 import { ICourse } from "types/type";
 
 interface CoursesListProps {
-  isLoading: boolean;
   courses: ICourse[];
 }
 
-export const CoursesList: React.FC<CoursesListProps> = ({
-  isLoading,
-  courses,
-}) => {
+export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCourses, setCurrentCourses] = useState<ICourse[]>([]);
 
@@ -37,36 +32,32 @@ export const CoursesList: React.FC<CoursesListProps> = ({
     <Container>
       <Title>Our Courses</Title>
       <CourseList>
-        {!isLoading ? (
-          currentCourses.map(
-            ({
-              id,
-              lessonsCount,
-              rating,
-              title,
-              tags,
-              meta,
-              previewImageLink,
-              description,
-            }) => (
-              <CourseItem
-                key={id}
-                id={id}
-                description={description}
-                lessonsCount={lessonsCount}
-                rating={rating}
-                title={title}
-                tags={tags}
-                meta={meta}
-                image={previewImageLink}
-              />
-            )
+        {currentCourses.map(
+          ({
+            id,
+            lessonsCount,
+            rating,
+            title,
+            tags,
+            meta,
+            previewImageLink,
+            description,
+          }) => (
+            <CourseItem
+              key={id}
+              id={id}
+              description={description}
+              lessonsCount={lessonsCount}
+              rating={rating}
+              title={title}
+              tags={tags}
+              meta={meta}
+              image={previewImageLink}
+            />
           )
-        ) : (
-          <Loader />
         )}
       </CourseList>
-      {!isLoading && currentCourses?.length !== 0 && (
+      {currentCourses?.length !== 0 && (
         <Pagination
           onPaginationClick={handlePaginationClick}
           totalPageCount={totalPageCount}
