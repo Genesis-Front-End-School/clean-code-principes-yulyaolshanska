@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { REHYDRATE } from "redux-persist";
 
 interface AuthResponse {
   token: string;
@@ -17,10 +18,15 @@ export const authApi = createApi({
   }),
   reducerPath: "authApi",
   tagTypes: ["Auth"],
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === REHYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
   endpoints: (builder) => ({
     getToken: builder.query<AuthResponse, string>({
       query: () => "",
-      providesTags: ["Auth"],
+      providesTags: (result) => [{ type: "Auth", id: result?.token }],
     }),
   }),
 });

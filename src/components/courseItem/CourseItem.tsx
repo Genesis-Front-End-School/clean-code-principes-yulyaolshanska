@@ -14,37 +14,37 @@ import {
   TagItem,
 } from "./CourseItem.styled";
 
-interface IMeta {
+interface ICourseMeta {
   courseVideoPreview?: object;
   skills?: string[];
 }
 
 interface CourseProps {
-  id: string;
+  courseId: string;
   description: string;
   lessonsCount: number;
   rating: number;
   title: string;
-  tags?: [];
-  meta?: IMeta;
+  tags?: string[];
+  courseMeta?: ICourseMeta;
   image: string;
 }
 
 export const CourseItem: React.FC<CourseProps> = ({
-  id,
+  courseId,
   lessonsCount,
   rating,
   title,
   tags = [],
-  meta,
+  courseMeta,
   image,
 }) => {
-  const skills = meta?.skills?.slice(0, 3) ?? [];
+  const skills: string[] = courseMeta?.skills?.slice(0, 3) || [];
   const location = useLocation();
 
   return (
     <Card>
-      <NavLink to={`/${id}`} state={{ from: location }}>
+      <NavLink to={`/${courseId}`} state={{ from: location }}>
         <CourseImg src={image + "/cover.webp"} />
         <DetailsBox>
           <CourseTitle>{title}</CourseTitle>

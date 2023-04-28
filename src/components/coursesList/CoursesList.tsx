@@ -10,11 +10,11 @@ interface CoursesListProps {
 }
 
 export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [currentCourses, setCurrentCourses] = useState<ICourse[]>([]);
 
   useEffect(() => {
-    const visitedPages = (currentPage - 1) * COURSES_PER_PAGE;
+    const visitedPages: number = (currentPage - 1) * COURSES_PER_PAGE;
     setCurrentCourses(
       courses.slice(visitedPages, visitedPages + COURSES_PER_PAGE)
     );
@@ -24,7 +24,7 @@ export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
     return Math.ceil(courses.length / COURSES_PER_PAGE);
   }, [courses.length]);
 
-  const handlePaginationClick = (currentPage: number) => {
+  const handlePaginationClick = (currentPage: number): void => {
     setCurrentPage(currentPage);
   };
 
@@ -45,13 +45,13 @@ export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
           }) => (
             <CourseItem
               key={id}
-              id={id}
+              courseId={id}
               description={description}
               lessonsCount={lessonsCount}
               rating={rating}
               title={title}
               tags={tags}
-              meta={meta}
+              courseMeta={meta}
               image={previewImageLink}
             />
           )

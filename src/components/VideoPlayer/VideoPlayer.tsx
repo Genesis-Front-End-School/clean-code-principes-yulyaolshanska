@@ -7,7 +7,7 @@ interface VideoPlayerProps {
   previewImageLink: string;
   order: number;
   id: string;
-  status: string;
+  status: "locked" | "unlocked";
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -16,11 +16,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   order,
   id: videoId,
   status,
-}) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+}: VideoPlayerProps) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const poster = `${previewImageLink}/lesson-${order}.webp`;
-  const isUnlocked = status === "unlocked";
+  const isUnlocked: boolean = status === "unlocked";
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -32,7 +32,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     }
   }, [videoLink, videoId]);
 
-  const handleSavedTime = (videoElement: HTMLVideoElement, videoId: string) => {
+  const handleSavedTime = (
+    videoElement: HTMLVideoElement,
+    videoId: string
+  ): void => {
     const savedTime = localStorage.getItem(videoId);
 
     if (savedTime !== null) {
@@ -50,7 +53,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     });
   };
 
-  const handleTimeUpdate = () => {
+  const handleTimeUpdate = (): void => {
     const currentTime = videoRef.current?.currentTime || 0;
 
     if (currentTime !== 0) {

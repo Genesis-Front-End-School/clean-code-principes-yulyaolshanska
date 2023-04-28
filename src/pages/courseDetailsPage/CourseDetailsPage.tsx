@@ -32,14 +32,14 @@ interface LessonseDetails {
 const LOCKED = "locked";
 
 const CourseDetailsPage: React.FC = () => {
-  const { id: courseId = "" } = useParams();
-  const { state } = useLocation();
+  const { id: courseId = "" } = useParams<{ id: string }>();
+  const { state }: { state?: { from: string } } = useLocation();
   const backLinkHref = state?.from ?? "/";
   const { data: course } = useGetCourseByIdQuery(courseId);
   const [currentLesson, setCurrentLesson] = useState<LessonseDetails | null>(
     null
   );
-  const [isVideoOpen, setIsVideoOpen] = useState(true);
+  const [isVideoOpen, setIsVideoOpen] = useState<boolean>(true);
 
   useEffect(() => {
     if (course?.lessons && course.lessons.length > 0) {
@@ -47,7 +47,7 @@ const CourseDetailsPage: React.FC = () => {
     }
   }, [course]);
 
-  const handleLessonClick = (lesson: LessonseDetails) => {
+  const handleLessonClick = (lesson: LessonseDetails): void => {
     if (lesson.status !== LOCKED) {
       setIsVideoOpen(true);
     } else {
@@ -71,7 +71,7 @@ const CourseDetailsPage: React.FC = () => {
             videoLink={currentLesson.link}
             order={currentLesson.order}
             previewImageLink={currentLesson.previewImageLink}
-            status={currentLesson.status}
+            status={currentLesson.status === "locked" ? "locked" : "unlocked"}
           />
         )}
       </VideoContainer>
