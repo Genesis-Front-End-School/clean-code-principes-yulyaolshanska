@@ -197,3 +197,10 @@
         `
 
 In this implementation, the GameController class has minimal dependencies on other classes. It depends only on the Game class and the UserInterface interface
+
+### What design principles did I use in the project:
+- Used the Redux library based on the Flux architecture.
+Flux divides the application into four layers: View, Action, Dispatcher and Store. This allows for more efficient management of application data and state, as well as avoiding redundant use of props and making components more independent.
+The following SOLID principles are implemented in Redux, such as: the Single Responsibility Principle and the Dependency Inversion Principle. In addition, the Open-Closed Principle is partially implemented through the use of middleware.
+
+- I used the React Router library, which implements the "router" design pattern (Router Pattern), which allows you to define routes in React applications.
