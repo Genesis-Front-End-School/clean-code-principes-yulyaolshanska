@@ -71,7 +71,7 @@ const CourseDetailsPage: React.FC = () => {
             videoLink={currentLesson.link}
             order={currentLesson.order}
             previewImageLink={currentLesson.previewImageLink}
-            status={currentLesson.status === "locked" ? "locked" : "unlocked"}
+            status={currentLesson.status === LOCKED ? "locked" : "unlocked"}
           />
         )}
       </VideoContainer>
