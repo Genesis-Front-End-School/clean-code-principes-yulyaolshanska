@@ -15,27 +15,27 @@ import {
 } from "./CourseItem.styled";
 
 interface IMeta {
-  courseVideoPreview: object;
+  courseVideoPreview?: object;
   skills?: string[];
 }
 
-interface ICourse {
+interface CourseProps {
   id: string;
   description: string;
   lessonsCount: number;
   rating: number;
   title: string;
-  tags: [];
-  meta: IMeta;
+  tags?: [];
+  meta?: IMeta;
   image: string;
 }
 
-export const CourseItem: React.FC<ICourse> = ({
+export const CourseItem: React.FC<CourseProps> = ({
   id,
   lessonsCount,
   rating,
   title,
-  tags,
+  tags = [],
   meta,
   image,
 }) => {
@@ -52,13 +52,16 @@ export const CourseItem: React.FC<ICourse> = ({
             <LessonsCount>Lessons: {lessonsCount}</LessonsCount>
             <Rating>Rating: {rating}</Rating>
           </Box>
-          {skills.length > 0 && <Skills>Skills:</Skills>}
-          <SkillsList>
-            {skills.length > 0 &&
-              skills.map((skill: string) => (
-                <SkillItem key={skill}> {skill}</SkillItem>
-              ))}
-          </SkillsList>
+          {skills.length > 0 && (
+            <>
+              <Skills>Skills:</Skills>
+              <SkillsList>
+                {skills.map((skill: string) => (
+                  <SkillItem key={skill}> {skill}</SkillItem>
+                ))}
+              </SkillsList>
+            </>
+          )}
           <TagItem>#{tags}</TagItem>
         </DetailsBox>
       </NavLink>

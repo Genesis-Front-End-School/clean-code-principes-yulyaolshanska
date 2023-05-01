@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Hls from "hls.js";
 import LockedVideoImg from "../../images/lockedVideo.png";
 
@@ -18,7 +18,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   status,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [currentVideoTime, setCurrentVideoTime] = useState<number>(0);
+
   const poster = `${previewImageLink}/lesson-${order}.webp`;
   const isUnlocked = status === "unlocked";
 
@@ -28,26 +28,33 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
     if (Hls.isSupported()) {
       const hls = new Hls();
-      hls.attachMedia(videoElement);
-      hls.on(Hls.Events.MEDIA_ATTACHED, () => {
-        hls.loadSource(videoLink);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          const savedTime = localStorage.getItem(videoId);
-
-          if (savedTime !== null) {
-            videoElement.currentTime = parseInt(savedTime);
-          }
-        });
-      });
+      attachMediaToHls(hls, videoElement);
     }
   }, [videoLink, videoId]);
 
+  const handleSavedTime = (videoElement: HTMLVideoElement, videoId: string) => {
+    const savedTime = localStorage.getItem(videoId);
+
+    if (savedTime !== null) {
+      videoElement.currentTime = parseInt(savedTime);
+    }
+  };
+
+  const attachMediaToHls = (hls: Hls, videoElement: HTMLVideoElement) => {
+    hls.attachMedia(videoElement);
+    hls.on(Hls.Events.MEDIA_ATTACHED, () => {
+      hls.loadSource(videoLink);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        handleSavedTime(videoElement, videoId);
+      });
+    });
+  };
+
   const handleTimeUpdate = () => {
-    const currentTime = videoRef.current?.currentTime || currentVideoTime;
+    const currentTime = videoRef.current?.currentTime || 0;
 
     if (currentTime !== 0) {
       localStorage.setItem(videoId, String(currentTime));
-      setCurrentVideoTime(currentTime);
     }
   };
 

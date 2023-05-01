@@ -56,10 +56,6 @@ export const LessonsCount = styled.p`
   font-weight: 600;
 `;
 
-export const Rating = styled.p`
-  font-weight: 600;
-`;
-
 export const Skills = styled.p`
   margin-bottom: 6px;
   font-weight: 600;
@@ -84,9 +80,8 @@ export const SkillItem = styled.li`
   }
 `;
 
-export const Progress = styled.p`
-  font-size: 12px;
-  line-height: calc(20 / 12);
+export const Rating = styled.p`
+  font-weight: 600;
 `;
 
 export const TagsList = styled.ul`

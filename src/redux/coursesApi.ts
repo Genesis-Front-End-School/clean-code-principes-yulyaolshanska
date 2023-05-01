@@ -1,31 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import type { RootState } from "./store";
+import { ICourses, ICourseDetail } from "types/type";
 
-interface ILesson {
-  id: string;
-  previewImageLink: string;
-  link: string;
-  status: string;
-  title: string;
-  order: number;
-}
-
-interface ICourse {
-  courses: [];
-}
-
-type CoursesResponse = ICourse;
-
-interface ICourseDetail {
-  title: string;
-  containsLockedLessons: boolean;
-  description: string;
-  lessons: ILesson[];
-  meta: object;
-  rating: number;
-}
-
+type CoursesResponse = ICourses;
 type CourseResponse = ICourseDetail;
 
 const baseQuery = fetchBaseQuery({

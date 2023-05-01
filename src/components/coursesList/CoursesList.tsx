@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { CourseItem } from "components/CourseItem/CourseItem";
-import Loader from "components/Loader/Loader";
-import {
-  Container,
-  CourseList,
-  PaginationButton,
-  PaginationButtonContainer,
-  Title,
-} from "./CoursesList.styled";
+import { Container, CourseList, Title } from "./CoursesList.styled";
+import { Pagination } from "components/Pagination/Pagination";
+import { COURSES_PER_PAGE } from "constants/pagination";
+import { ICourse } from "types/type";
 
-type IProps = {
-  isLoading: boolean;
-  courses: [];
-};
+interface CoursesListProps {
+  courses: ICourse[];
+}
 
-const FIRST_PAGE = 1;
-const COURSES_PER_PAGE = 10;
-
-export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
+export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentCourses, setCurrentCourses] = useState([]);
-  const LAST_PAGE = currentCourses.length < 10;
+  const [currentCourses, setCurrentCourses] = useState<ICourse[]>([]);
 
   useEffect(() => {
     const visitedPages = (currentPage - 1) * COURSES_PER_PAGE;
@@ -29,64 +20,48 @@ export const CoursesList: React.FC<IProps> = ({ isLoading, courses }) => {
     );
   }, [courses, currentPage]);
 
-  const handlePrevClick = () => {
-    setCurrentPage(currentPage - 1);
-  };
+  const totalPageCount = useMemo(() => {
+    return Math.ceil(courses.length / COURSES_PER_PAGE);
+  }, [courses.length]);
 
-  const handleNextClick = () => {
-    setCurrentPage(currentPage + 1);
+  const handlePaginationClick = (currentPage: number) => {
+    setCurrentPage(currentPage);
   };
 
   return (
     <Container>
       <Title>Our Courses</Title>
       <CourseList>
-        {!isLoading ? (
-          currentCourses.map(
-            ({
-              id,
-              lessonsCount,
-              rating,
-              title,
-              tags,
-              meta,
-              previewImageLink,
-              description,
-            }) => (
-              <CourseItem
-                key={id}
-                id={id}
-                description={description}
-                lessonsCount={lessonsCount}
-                rating={rating}
-                title={title}
-                tags={tags}
-                meta={meta}
-                image={previewImageLink}
-              />
-            )
+        {currentCourses.map(
+          ({
+            id,
+            lessonsCount,
+            rating,
+            title,
+            tags,
+            meta,
+            previewImageLink,
+            description,
+          }) => (
+            <CourseItem
+              key={id}
+              id={id}
+              description={description}
+              lessonsCount={lessonsCount}
+              rating={rating}
+              title={title}
+              tags={tags}
+              meta={meta}
+              image={previewImageLink}
+            />
           )
-        ) : (
-          <Loader />
         )}
       </CourseList>
-      {!isLoading && currentCourses?.length !== 0 && (
-        <PaginationButtonContainer>
-          <PaginationButton
-            active={currentPage > FIRST_PAGE}
-            disabled={currentPage <= FIRST_PAGE}
-            onClick={handlePrevClick}
-          >
-            Prev
-          </PaginationButton>
-          <PaginationButton
-            active={!LAST_PAGE}
-            disabled={LAST_PAGE}
-            onClick={handleNextClick}
-          >
-            Next
-          </PaginationButton>
-        </PaginationButtonContainer>
+      {currentCourses?.length !== 0 && (
+        <Pagination
+          onPaginationClick={handlePaginationClick}
+          totalPageCount={totalPageCount}
+        />
       )}
     </Container>
   );
