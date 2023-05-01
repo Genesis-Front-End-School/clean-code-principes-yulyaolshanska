@@ -7,7 +7,7 @@ interface IToken {
 export const setTokenReducer = (
   state: IToken,
   action: PayloadAction<string>
-) => {
+): void => {
   state.token = action.payload;
 };
 

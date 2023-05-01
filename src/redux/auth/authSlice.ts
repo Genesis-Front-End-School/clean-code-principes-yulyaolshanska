@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setTokenReducer, unsetTokenReducer } from "./authReducers";
 
-const initialState = {
+interface IAuthState {
+  token: string | null;
+}
+
+const initialState: IAuthState = {
   token: null,
 };
 
