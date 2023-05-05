@@ -39,7 +39,7 @@ const CourseDetailsPage: React.FC = () => {
   const [currentLesson, setCurrentLesson] = useState<LessonseDetails | null>(
     null
   );
-  const [isVideoOpen, setIsVideoOpen] = useState<boolean>(true);
+  const [isVideoOpen, setIsVideoOpen] = useState(true);
 
   useEffect(() => {
     if (course?.lessons && course.lessons.length > 0) {

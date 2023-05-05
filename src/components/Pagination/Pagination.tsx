@@ -14,7 +14,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalPageCount,
   onPaginationClick,
 }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handlePrevClick = () => {
     setCurrentPage(currentPage - 1);
@@ -28,7 +28,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const isLastPage: boolean = currentPage === totalPageCount;
+  const isLastPage = currentPage === totalPageCount;
 
   return (
     <PaginationButtonContainer>

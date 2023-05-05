@@ -10,7 +10,7 @@ interface CoursesListProps {
 }
 
 export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [currentCourses, setCurrentCourses] = useState<ICourse[]>([]);
 
   useEffect(() => {

@@ -16,11 +16,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   order,
   id: videoId,
   status,
-}: VideoPlayerProps) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const poster = `${previewImageLink}/lesson-${order}.webp`;
-  const isUnlocked: boolean = status === "unlocked";
+  const isUnlocked = status === "unlocked";
 
   useEffect(() => {
     const videoElement = videoRef.current;
