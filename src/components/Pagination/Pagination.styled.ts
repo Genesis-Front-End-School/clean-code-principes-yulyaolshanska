@@ -8,14 +8,14 @@ export const StyledButton = styled.button<{ active: boolean }>`
   border: ${(p) => (p.active ? "none" : "2px solid")};
   border-radius: 40px;
   background-color: ${(p) =>
-    p.active ? p.theme.colors.accent : p.theme.colors.white};
+    p.active ? p.theme.colors.accent : "fff"};
   color: ${(p) =>
     p.active ? p.theme.colors.secondatyBtnText : p.theme.colors.accent};
 
   :hover:not(:disabled),
   :focus:not(:disabled) {
     background-color: ${(p) =>
-      p.active ? p.theme.colors.accent : p.theme.colors.white};
+      p.active ? p.theme.colors.accent : "fff"};
     border-color: ${(p) => p.theme.colors.hoverBtn};
     color: ${(p) =>
       p.active ? p.theme.colors.secondatyBtnText : p.theme.colors.accent};

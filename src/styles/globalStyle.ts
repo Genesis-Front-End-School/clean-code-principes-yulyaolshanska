@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -33,3 +33,5 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 `;
+
+export default GlobalStyle;

@@ -89,6 +89,7 @@ const CourseDetailsPage: React.FC = () => {
       <CourseLessonsList>
         {course?.lessons.map((lesson: LessonseDetails) => (
           <CourseLesson
+            role="lesson"
             onClick={() => handleLessonClick(lesson)}
             key={lesson.id}
             id={lesson.id}

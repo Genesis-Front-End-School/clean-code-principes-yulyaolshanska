@@ -19,9 +19,8 @@ interface ICourseMeta {
   skills?: string[];
 }
 
-interface CourseProps {
+interface CourseProps extends React.ComponentPropsWithoutRef<"div"> {
   courseId: string;
-  description: string;
   lessonsCount: number;
   rating: number;
   title: string;
@@ -45,7 +44,7 @@ export const CourseItem: React.FC<CourseProps> = ({
   return (
     <Card>
       <NavLink to={`/${courseId}`} state={{ from: location }}>
-        <CourseImg src={image + "/cover.webp"} />
+        <CourseImg src={image + "/cover.webp"} alt="Course preview image" />
         <DetailsBox>
           <CourseTitle>{title}</CourseTitle>
           <Box>

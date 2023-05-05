@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { CourseItem } from "components/CourseItem/CourseItem";
+import { CourseItem } from "../CourseItem/CourseItem";
 import { Container, CourseList, Title } from "./CoursesList.styled";
-import { Pagination } from "components/Pagination/Pagination";
-import { COURSES_PER_PAGE } from "constants/pagination";
+import { Pagination } from "../Pagination/Pagination";
+import { COURSES_PER_PAGE } from "../../constants/pagination";
 import { ICourse } from "types/type";
 
 interface CoursesListProps {
@@ -41,12 +41,10 @@ export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
             tags,
             meta,
             previewImageLink,
-            description,
           }) => (
             <CourseItem
               key={id}
               courseId={id}
-              description={description}
               lessonsCount={lessonsCount}
               rating={rating}
               title={title}
