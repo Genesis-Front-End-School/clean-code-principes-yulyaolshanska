@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { useGetCourseByIdQuery } from "redux/coursesApi";
+import { useGetCourseByIdQuery } from "../../redux/coursesApi";
 import {
   ArrowIcon,
   BackLink,
@@ -17,8 +17,8 @@ import {
   CurrentLessContainer,
   CurrentText,
 } from "./CourseDetailsPage.styled";
-import { Container } from "components/CoursesList/CoursesList.styled";
-import VideoPlayer from "components/VideoPlayer/VideoPlayer";
+import { Container } from "../../components/CoursesList/CoursesList.styled";
+import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 
 interface LessonseDetails {
   id: string;
@@ -67,6 +67,7 @@ const CourseDetailsPage: React.FC = () => {
       <VideoContainer>
         {isVideoOpen && currentLesson && (
           <VideoPlayer
+          data-testid="video-player"
             id={currentLesson.id}
             videoLink={currentLesson.link}
             order={currentLesson.order}
@@ -98,7 +99,9 @@ const CourseDetailsPage: React.FC = () => {
               <LessonTitle active={currentLesson?.id === lesson.id}>
                 {lesson.title}.
               </LessonTitle>
-              {lesson.status === LOCKED && <LockIcon />}
+              {lesson.status === LOCKED && (
+                <LockIcon data-testid="lock-icon-2" />
+              )}
             </TitleBox>
           </CourseLesson>
         ))}

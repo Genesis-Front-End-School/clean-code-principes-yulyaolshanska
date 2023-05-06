@@ -18,7 +18,7 @@ const CoursesPage = lazy(() => import("../pages/coursesPage/CoursesPage"));
       <GlobalStyle />
       <Suspense fallback={(<Loader />) as React.ReactNode}>
         <Routes>
-          <Route path="/" element={<CoursesPage />} />
+          <Route path="/" element={<CoursesPage  />} />
           <Route path="/:id" element={<CourseDetailsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

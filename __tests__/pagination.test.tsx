@@ -13,7 +13,6 @@ describe("Pagination component", () => {
   });
 
   afterEach(() => {
-    // window.scrollTo.mockRestore();
     mockOnPaginationClick.mockClear();
   });
 

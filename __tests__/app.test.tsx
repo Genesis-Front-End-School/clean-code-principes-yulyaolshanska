@@ -1,21 +1,23 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import App from "../src/components/App";
 import theme from "../src/styles/theme";
+import App from "../src/components/App";
+import React from "react";
+import "@testing-library/jest-dom";
+
+jest.mock("../src/pages/notFoundPage/NotFoundPage", () => () => (
+  <div data-testid="not-found" />
+));
+jest.mock("../src/pages/courseDetailsPage/CourseDetailsPage", () => () => (
+  <div data-testid="course-details" />
+));
+jest.mock("../src/pages/coursesPage/CoursesPage", () => () => (
+  <div data-testid="courses" />
+));
 
 describe("App", () => {
-  jest.mock("../src/pages/notFoundPage/NotFoundPage", () => () => (
-    <div data-testid="not-found" />
-  ));
-  jest.mock("../src/pages/courseDetailsPage/CourseDetailsPage", () => () => (
-    <div data-testid="course-details" />
-  ));
-  jest.mock("../src/pages/coursesPage/CoursesPage", () => () => (
-    <div data-testid="courses" />
-  ));
-  it("renders CoursesPage component on default route", () => {
+  it("renders CoursesPage component for '/' route", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <ThemeProvider theme={theme}>
@@ -23,21 +25,25 @@ describe("App", () => {
         </ThemeProvider>
       </MemoryRouter>
     );
-    expect(screen.getByTestId("courses-page")).toBeInTheDocument();
+
+    await screen
+      .findByTestId("courses")
+      .then((element) => expect(element).toBeInTheDocument());
   });
 
-  it("renders CourseDetailsPage component on '/:id' route", () => {
+  it("renders CourseDetailsPage component for '/:id' route", () => {
     render(
-      <MemoryRouter initialEntries={["/1"]}>
+      <MemoryRouter initialEntries={["/123"]}>
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
       </MemoryRouter>
     );
-    expect(screen.getByTestId("course-details-page")).toBeInTheDocument();
+
+    expect(screen.getByTestId("course-details")).toBeInTheDocument();
   });
 
-  it("renders NotFoundPage component on unknown route", () => {
+  it("renders NotFoundPage component for unknown routes", () => {
     render(
       <MemoryRouter initialEntries={["/unknown"]}>
         <ThemeProvider theme={theme}>
@@ -45,7 +51,8 @@ describe("App", () => {
         </ThemeProvider>
       </MemoryRouter>
     );
-    expect(screen.getByTestId("not-found-page")).toBeInTheDocument();
+
+    expect(screen.queryByTestId("not-found")).toBeInTheDocument();
   });
 });
 
