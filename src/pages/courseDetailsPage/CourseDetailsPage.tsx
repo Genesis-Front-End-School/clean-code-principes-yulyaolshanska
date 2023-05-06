@@ -5,31 +5,14 @@ import {
   ArrowIcon,
   BackLink,
   CourseDescription,
-  CourseLesson,
-  CourseLessonsList,
-  LessonTitle,
   CourseTitle,
-  LockIcon,
-  Title,
-  TitleBox,
   VideoContainer,
-  CurrentLesson,
-  CurrentLessContainer,
-  CurrentText,
 } from "./CourseDetailsPage.styled";
 import { Container } from "components/CoursesList/CoursesList.styled";
 import VideoPlayer from "components/VideoPlayer/VideoPlayer";
-
-interface LessonseDetails {
-  id: string;
-  link: string;
-  title: string;
-  status: string;
-  previewImageLink: string;
-  order: number;
-}
-
-const LOCKED = "locked";
+import LessonsList from "components/LessonsList/LessonsList";
+import { LOCKED } from "constants/other";
+import { LessonseDetails } from "types/type";
 
 const CourseDetailsPage: React.FC = () => {
   const { id: courseId = "" } = useParams<{ id: string }>();
@@ -75,33 +58,11 @@ const CourseDetailsPage: React.FC = () => {
           />
         )}
       </VideoContainer>
-      {currentLesson && (
-        <CurrentLessContainer>
-          <CurrentLesson>
-            Current Lesson: <CurrentText>{currentLesson.title}</CurrentText>
-          </CurrentLesson>
-          <CurrentLesson>
-            Status: <CurrentText>{currentLesson.status}</CurrentText>
-          </CurrentLesson>
-        </CurrentLessContainer>
-      )}
-      <Title>Lessons:</Title>
-      <CourseLessonsList>
-        {course?.lessons.map((lesson: LessonseDetails) => (
-          <CourseLesson
-            onClick={() => handleLessonClick(lesson)}
-            key={lesson.id}
-            id={lesson.id}
-          >
-            <TitleBox>
-              <LessonTitle active={currentLesson?.id === lesson.id}>
-                {lesson.title}.
-              </LessonTitle>
-              {lesson.status === LOCKED && <LockIcon />}
-            </TitleBox>
-          </CourseLesson>
-        ))}
-      </CourseLessonsList>
+      <LessonsList
+        lessons={course?.lessons}
+        onLessonClick={handleLessonClick}
+        currentLesson={currentLesson}
+      />
     </Container>
   );
 };
