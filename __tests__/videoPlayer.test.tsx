@@ -8,6 +8,12 @@ import "@testing-library/jest-dom";
 jest.mock("../src/images/lockedVideo.png", () => ({
   default: "path/to/mock/image.png",
 }));
+jest.mock("../src/helpers/hooks/videoPlayer", () => ({
+  attachMediaToHls: jest.fn(),
+}));
+jest.mock("../src/helpers/hooks/videoPlayer", () => ({
+  handleTimeUpdate: jest.fn(),
+}));
 
 describe("Describe video component", () => {
   const mockedProps = {
