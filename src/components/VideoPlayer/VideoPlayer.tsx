@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import Hls from "hls.js";
 import LockedVideoImg from "../../images/lockedVideo.png";
-import { attachMediaToHls, handleTimeUpdate } from "helpers/hooks/videoPlayer";
+import { handleTimeUpdate } from "../../helpers/hooks/videoPlayer";
+import { useHlsVideoPlayer } from "../../helpers/hooks/useHlsVideoPlayer";
 
 interface VideoPlayerProps {
   videoLink: string;
@@ -24,13 +24,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const isUnlocked = status === "unlocked";
 
   useEffect(() => {
-    const videoElement = videoRef.current;
-    if (!videoElement) return;
-
-    if (Hls.isSupported()) {
-      const hls = new Hls();
-      attachMediaToHls(hls, videoElement, videoLink, videoId);
-    }
+    useHlsVideoPlayer(videoRef, videoLink, videoId);
   }, [videoLink, videoId]);
 
   return (
