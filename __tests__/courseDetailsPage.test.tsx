@@ -16,7 +16,6 @@ jest.mock("../src/components/VideoPlayer/VideoPlayer", () => ({
   default: jest.fn(() => <div>Mock VideoPlayer</div>),
 }));
 
-
 const mockCourse = {
   id: "1",
   title: "Course Title",
@@ -57,7 +56,6 @@ describe("CourseDetailsPage", () => {
       isError: false,
       isSuccess: true,
       refetch: jest.fn(),
-      //   ...rest // Spread in any additional properties you need
     } as unknown as ReturnType<typeof useGetCourseByIdQuery>);
   });
 
@@ -86,9 +84,9 @@ describe("CourseDetailsPage", () => {
   it("renders lesson list", () => {
     render(
       <MemoryRouter initialEntries={[`/courses/${mockCourse.id}`]}>
-            <ThemeProvider theme={theme}>
-              <CourseDetailsPage />
-            </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <CourseDetailsPage />
+        </ThemeProvider>
       </MemoryRouter>
     );
 
@@ -107,177 +105,5 @@ describe("CourseDetailsPage", () => {
       }
     });
   });
-
-//   it("renders video player when lesson is unlocked", () => {
-//     render(
-//       <MemoryRouter initialEntries={[`/courses/${mockCourse.id}`]}>
-//             <ThemeProvider theme={theme}>
-//               <CourseDetailsPage />
-//             </ThemeProvider>
-//       </MemoryRouter>
-//     );
-
-//     const unlockedLesson = mockCourse.lessons.find(
-//       (lesson) => lesson.status === "unlocked"
-//     );
-
-//     if (!unlockedLesson) {
-//       throw new Error("No unlocked lesson found");
-//     }
-
-//     fireEvent.click(screen.getByText(`${unlockedLesson.title}.`));
-
-//     expect(screen.getByTestId("video-player")).toBeInTheDocument();
-//   });
-
-// it("does not render video player when lesson is locked", () => {
-//   render(
-//       <MemoryRouter initialEntries={[`/courses/${mockCourse.id}`]}>
-//           <ThemeProvider theme={theme}>
-//             <CourseDetailsPage />
-//           </ThemeProvider>
-//       </MemoryRouter>
-//   );
-
-//   const lockedLesson = mockCourse.lessons.find(
-//     (lesson) => lesson.status === "locked"
-//   );
-
-//   if (!lockedLesson) {
-//     throw new Error("No locked lesson found");
-//   }
-
-//   fireEvent.click(screen.getByText(`${lockedLesson.title}.`));
-
-//   expect(screen.queryByTestId("video-player")).not.toBeInTheDocument();
-// });
-
-});
-
-// import React from "react";
-// import { render, screen } from "@testing-library/react";
-// import { useLocation, useParams } from "react-router-dom";
-// import { useGetCourseByIdQuery } from "../src/redux/coursesApi";
-// import CourseDetailsPage from "../src/pages/courseDetailsPage/CourseDetailsPage";
-
-// jest.mock("react-router-dom", () => ({
-//   useLocation: jest.fn(),
-//   useParams: jest.fn(),
-// }));
-
-// jest.mock("redux/coursesApi", () => ({
-//   useGetCourseByIdQuery: jest.fn(),
-// }));
-
-// describe("CourseDetailsPage", () => {
-//   beforeEach(() => {
-//     jest.clearAllMocks();
-//   });
-
-//   it("should render back link with correct href", () => {
-//     const from = "/courses";
-//     useLocation.mockReturnValue({ state: { from } });
-//     useParams.mockReturnValue({ id: "1" });
-//     useGetCourseByIdQuery.mockReturnValue({
-//       data: {
-//         title: "Test Course",
-//         description: "This is a test course",
-//         lessons: [],
-//       },
-//     });
-
-//     render(<CourseDetailsPage />);
-
-//     const backLink = screen.getByText("Go Back");
-//     expect(backLink.getAttribute("href")).toBe(from);
-//   });
-
-//   it("should render course title and description", () => {
-//     useParams.mockReturnValue({ id: "1" });
-//     useGetCourseByIdQuery.mockReturnValue({
-//       data: {
-//         title: "Test Course",
-//         description: "This is a test course",
-//         lessons: [],
-//       },
-//     });
-
-//     render(<CourseDetailsPage />);
-
-//     const courseTitle = screen.getByText("Test Course");
-//     const courseDescription = screen.getByText("This is a test course");
-//     expect(courseTitle).toBeInTheDocument();
-//     expect(courseDescription).toBeInTheDocument();
-//   });
-
-//   it("should render lessons list", () => {
-//     useParams.mockReturnValue({ id: "1" });
-//     useGetCourseByIdQuery.mockReturnValue({
-//       data: {
-//         title: "Test Course",
-//         description: "This is a test course",
-//         lessons: [
-//           {
-//             id: "1",
-//             title: "Lesson 1",
-//             status: "unlocked",
-//             link: "",
-//             previewImageLink: "",
-//             order: 1,
-//           },
-//           {
-//             id: "2",
-//             title: "Lesson 2",
-//             status: "locked",
-//             link: "",
-//             previewImageLink: "",
-//             order: 2,
-//           },
-//         ],
-//       },
-//     });
-
-//     render(<CourseDetailsPage />);
-
-//     const lesson1 = screen.getByRole("lesson", { name: "Lesson 1." });
-//     const lesson2 = screen.getByRole("lesson", { name: "Lesson 2." });
-//     expect(lesson1).toBeInTheDocument();
-//     expect(lesson2).toBeInTheDocument();
-//   });
-
-//   it("should update current lesson on lesson click", () => {
-//     useParams.mockReturnValue({ id: "1" });
-//     useGetCourseByIdQuery.mockReturnValue({
-//       data: {
-//         title: "Test Course",
-//         description: "This is a test course",
-//         lessons: [
-//           {
-//             id: "1",
-//             title: "Lesson 1",
-//             status: "unlocked",
-//             link: "",
-//             previewImageLink: "",
-//             order: 1,
-//           },
-//           {
-//             id: "2",
-//             title: "Lesson 2",
-//             status: "locked",
-//             link: "",
-//             previewImageLink: "",
-//             order: 2,
-//           },
-//         ],
-//       },
-//     });
-
-//     render(<CourseDetailsPage />);
-
-//     const lesson1 = screen.getByRole("lesson", { name: "Lesson 1." });
-//     const lesson2 = screen.getByRole("lesson", { name: "Lesson 2." });
-//     lesson2.click();
-//     expect(lesson2).toHaveClass("active");
-//     expect(lesson1).not.toHaveClass("active");
-//   });
-// });
+})
+  

@@ -1,8 +1,6 @@
 import React from "react";
-import { fireEvent, render } from "@testing-library/react";
-
+import { render } from "@testing-library/react";
 import Video from "../src/components/VideoPlayer/VideoPlayer";
-
 import "@testing-library/jest-dom";
 
 jest.mock("../src/images/lockedVideo.png", () => ({
@@ -18,10 +16,9 @@ jest.mock("../src/helpers/hooks/videoPlayer", () => ({
 describe("Describe video component", () => {
   const mockedProps = {
     id: "1",
-    previewImageLink: "",
+    previewImageLink: "https://example.com/preview.jpg",
     order: 1,
   };
-
   const source = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
   const videoElem = (
     <Video videoLink={source} {...mockedProps} status="unlocked" />

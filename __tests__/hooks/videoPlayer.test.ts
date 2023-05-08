@@ -4,8 +4,6 @@ import {
   handleTimeUpdate,
 } from "../../src/helpers/hooks/videoPlayer";
 
-import { render } from "@testing-library/react";
-
 describe("handleSavedTime", () => {
   beforeEach(() => {
     jest.resetAllMocks();
