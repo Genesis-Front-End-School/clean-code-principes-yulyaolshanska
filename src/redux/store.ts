@@ -11,12 +11,14 @@ import {
 import { authApi } from "./auth/authApi";
 import { persistedReducer } from "./auth/authPersist";
 import { coursesApi } from "./coursesApi";
+import { userSlice } from "./user/userSlice";
 
 export const store = configureStore({
   reducer: {
     [coursesApi.reducerPath]: coursesApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
     auth: persistedReducer,
+    user: userSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({
