@@ -21,7 +21,7 @@ const CoursesPage: React.FC = () => {
     }
   }, [data, getCourses]);
 
-  return <>{!isLoading ? <CoursesList courses={courses} /> : <Loader />}</>;
+  return <>{!isLoading ? <CoursesList courses={courses} /> : <Loader />} </>;
 };
 
 export default CoursesPage;

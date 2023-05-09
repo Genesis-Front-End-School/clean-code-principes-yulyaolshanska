@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "styles/theme";
 import { FaLock } from "react-icons/fa";
 
 interface LessonTitleProps extends React.HTMLProps<HTMLHeadingElement> {
@@ -29,6 +28,8 @@ export const Title = styled.p`
 export const CourseLessonsList = styled.ol``;
 
 export const CourseLesson = styled.li`
+  color: ${(p) => p.theme.colors.text};
+
   &:not(:last-child) {
     margin-bottom: 12px;
   }
@@ -43,7 +44,8 @@ export const TitleBox = styled.div`
 export const LessonTitle = styled.h2<LessonTitleProps>`
   margin-right: 10px;
   font-weight: 500;
-  color: ${(p) => (p.active ? theme.colors.title : "inherit")};
+  color: ${(p) =>
+    p.active ? p.theme.colors.primaryText : p.theme.colors.text};
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {

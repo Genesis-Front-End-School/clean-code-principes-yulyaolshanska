@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { GlobalThemeProps } from "types/type";
 
 export const Card = styled.li`
   border-radius: 16px;
   width: 340px;
   overflow: hidden;
-  box-shadow: rgb(24 39 75 / 12%) 0px 8px 18px -6px,
-    rgb(24 39 75 / 12%) 0px 12px 42px -4px;
+  box-shadow: ${({ theme }: GlobalThemeProps) =>
+    `${theme.colors.cardShadow1} 0px 8px 18px -6px, ${theme.colors.cardShadow2} 0px 12px 42px -4px  
+ `};
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
@@ -27,6 +29,7 @@ export const DetailsBox = styled.div`
 export const CourseTitle = styled.h2`
   margin-bottom: 14px;
   font-size: 18px;
+
   @media ${(p) => p.theme.media.tablet} {
     margin-bottom: 16px;
   }
@@ -74,6 +77,7 @@ export const SkillItem = styled.li`
   padding-left: 24px;
   margin-bottom: 6px;
   display: list-item;
+  color: ${({ theme }: GlobalThemeProps) => theme.colors.text};
 
   &::first-letter {
     text-transform: capitalize;
