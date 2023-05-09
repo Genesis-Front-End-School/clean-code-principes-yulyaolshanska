@@ -1,11 +1,16 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, withTheme } from "styled-components";
+import { GlobalThemeProps } from "../types/type";
 
 export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     box-sizing: border-box;
   }
- 
+
+  body {
+    background-color:${({ theme }: GlobalThemeProps) => theme.colors.body};
+  }
+   
   img {
     display: block;
     max-width: 100%;
@@ -26,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
   h6,
   p {
     margin: 0;
+    color:${({ theme }: GlobalThemeProps) => theme.colors.text};
   }
   
   a {
@@ -33,3 +39,5 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 `;
+
+export default withTheme(GlobalStyle);
