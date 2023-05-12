@@ -31,3 +31,12 @@ export interface ICourseDetail {
   meta: object;
   rating: number;
 }
+
+export interface LessonseDetails {
+  id: string;
+  link: string;
+  title: string;
+  status: string;
+  previewImageLink: string;
+  order: number;
+}
