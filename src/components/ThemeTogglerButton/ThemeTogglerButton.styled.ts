@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const HiMoonIcon = styled(HiMoon)`
-  margin-left: 3px;
+  margin-right: auto;
   height: 25px;
   color: ${({ theme }) => theme.colors.text};
   z-index: 11;
@@ -25,12 +25,10 @@ export const IconsBox = styled.div`
   cursor: pointer;
   top: 20px;
   right: 30px;
-  /* right: 0;
-  bottom: 0; */
+  z-index: 20;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /* top: 25%; */
   align-items: center;
   width: 55px;
   height: 24px;
@@ -45,6 +43,19 @@ export const IconsBox = styled.div`
   border: 1px solid #8a67fa;
   box-shadow: 0 0 2px ${({ theme }) => theme.colors.text};
 
+  @media ${(p) => p.theme.media.tablet} {
+    top: 25px;
+    right: 60px;
+  }
+
+  @media screen and (min-width: 940px) {
+    right: 100px;
+  }
+
+  @media ${(p) => p.theme.media.desktop} {
+    top: 25px;
+    right: 140px;
+  }
   &:before {
     position: absolute;
     content: "";

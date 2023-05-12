@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { CourseItem } from "components/CourseItem/CourseItem";
-import { Container, CourseList, Title } from "./CoursesList.styled";
+import { CourseList, Title } from "./CoursesList.styled";
 import { Pagination } from "components/Pagination/Pagination";
 import { COURSES_PER_PAGE } from "constants/pagination";
 import { ICourse } from "types/type";
@@ -29,7 +29,7 @@ export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
   };
 
   return (
-    <Container>
+    <>
       <Title>Our Courses</Title>
       <CourseList>
         {currentCourses.map(
@@ -63,6 +63,6 @@ export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
           totalPageCount={totalPageCount}
         />
       )}
-    </Container>
+    </>
   );
 };

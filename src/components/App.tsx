@@ -1,5 +1,4 @@
 import { useAppSelector } from "helpers/hooks/hooks";
-import useThemeMode from "helpers/hooks/useThemeMode";
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ThemeContext, ThemeProvider } from "styled-components";
@@ -15,7 +14,9 @@ const CourseDetailsPage = lazy(
 const CoursesPage = lazy(() => import("../pages/coursesPage/CoursesPage"));
 
 export const App: React.FC = () => {
-  const currentTheme = useAppSelector((state) => state.user.theme);
+  const LocalStorageTheme = localStorage.getItem("theme");
+  const storeTheme = useAppSelector((state) => state.user.theme);
+  const currentTheme = LocalStorageTheme ? LocalStorageTheme : storeTheme;
   const themeMode = currentTheme === "dark" ? darkTheme : lightTheme;
 
   return (

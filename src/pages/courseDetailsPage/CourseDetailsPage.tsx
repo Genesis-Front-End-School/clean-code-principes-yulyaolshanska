@@ -8,7 +8,6 @@ import {
   CourseTitle,
   VideoContainer,
 } from "./CourseDetailsPage.styled";
-import { Container } from "components/CoursesList/CoursesList.styled";
 import VideoPlayer from "components/VideoPlayer/VideoPlayer";
 import LessonsList from "components/LessonsList/LessonsList";
 import { LOCKED } from "constants/other";
@@ -40,7 +39,7 @@ const CourseDetailsPage: React.FC = () => {
   };
 
   return (
-    <Container>
+    <>
       <BackLink to={backLinkHref}>
         <ArrowIcon />
         Go Back
@@ -63,7 +62,7 @@ const CourseDetailsPage: React.FC = () => {
         onLessonClick={handleLessonClick}
         currentLesson={currentLesson}
       />
-    </Container>
+    </>
   );
 };
 

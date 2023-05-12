@@ -49,6 +49,7 @@ export interface ThemeProps {
     backdrop: string;
     accent: string;
     title: string;
+    subTitle: string;
     cardShadow1: string;
     cardShadow2: string;
     primaryText: string;

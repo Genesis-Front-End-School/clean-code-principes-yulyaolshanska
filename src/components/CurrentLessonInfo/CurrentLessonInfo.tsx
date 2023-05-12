@@ -3,6 +3,7 @@ import {
   CurrentLessContainer,
   CurrentLesson,
   CurrentText,
+  Title,
 } from "./CurrentLessonInfo.styled";
 
 interface ICurrentLessonInfo {
@@ -15,13 +16,17 @@ export const CurrentLessonInfo: React.FC<ICurrentLessonInfo> = ({
   status,
 }) => {
   return (
-    <CurrentLessContainer>
-      <CurrentLesson>
-        Current Lesson: <CurrentText>{title}</CurrentText>
-      </CurrentLesson>
-      <CurrentLesson>
-        Status: <CurrentText>{status}</CurrentText>
-      </CurrentLesson>
-    </CurrentLessContainer>
+    <>
+      <CurrentLessContainer>
+        <CurrentLesson>
+          <Title> Current Lesson:</Title>
+          <CurrentText>{title}.</CurrentText>
+        </CurrentLesson>
+        <CurrentLesson>
+          <Title> Status: </Title>
+          <CurrentText>{status}</CurrentText>
+        </CurrentLesson>
+      </CurrentLessContainer>
+    </>
   );
 };

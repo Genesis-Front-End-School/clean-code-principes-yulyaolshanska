@@ -73,7 +73,8 @@ export const SkillsList = styled.ul`
 export const SkillItem = styled.li`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  justify-content: space-around;
   padding-left: 24px;
   margin-bottom: 6px;
   display: list-item;
