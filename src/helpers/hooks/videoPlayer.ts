@@ -7,7 +7,7 @@ export const handleSavedTime = (
 ): void => {
   const savedTime = localStorage.getItem(videoId);
 
-  if (savedTime !== null) {
+  if (savedTime) {
     videoElement.currentTime = parseInt(savedTime);
   }
 };
