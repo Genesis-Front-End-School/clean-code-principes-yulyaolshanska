@@ -10,11 +10,13 @@ export const Container = styled.div`
   @media ${(p) => p.theme.media.tablet} {
     width: 768px;
   }
-  @media screen and (min-width: 940px) {
-    width: 940px;
+  @media screen and (min-width: 1060px) {
+    width: 1060px;
   }
-
   @media ${(p) => p.theme.media.desktop} {
     width: 1280px;
+  }
+  @media ${(p) => p.theme.media.desktopM} {
+    width: 1420px;
   }
 `;

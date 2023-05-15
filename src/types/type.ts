@@ -62,6 +62,7 @@ export interface ThemeProps {
     mobileM: string;
     tablet: string;
     desktop: string;
+    desktopM: string;
   };
 }
 

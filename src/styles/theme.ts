@@ -22,6 +22,7 @@ export const lightTheme: ThemeProps = {
     mobileM: "(max-width: 767px)",
     tablet: "(min-width: 768px)",
     desktop: "(min-width: 1280px)",
+    desktopM: "(min-width: 1420px)",
   },
 };
 
@@ -48,5 +49,6 @@ export const darkTheme: ThemeProps = {
     mobileM: "(max-width: 767px)",
     tablet: "(min-width: 768px)",
     desktop: "(min-width: 1280px)",
+    desktopM: "(min-width: 1420px)",
   },
 };

@@ -47,15 +47,14 @@ export const IconsBox = styled.div`
     top: 25px;
     right: 60px;
   }
-
   @media screen and (min-width: 940px) {
     right: 100px;
   }
-
   @media ${(p) => p.theme.media.desktop} {
     top: 25px;
     right: 140px;
   }
+
   &:before {
     position: absolute;
     content: "";
@@ -66,7 +65,6 @@ export const IconsBox = styled.div`
     background-color: ${({ theme }) => theme.colors.background};
     -webkit-transition: 0.2s;
     transition: 0.2s;
-
     border-radius: 50%;
   }
 `;
@@ -84,12 +82,7 @@ export const SwitchInput = styled.input`
 `;
 
 export const SwitchLabel = styled.label`
-  /* position: relative; */
   display: inline-block;
   width: 4rem;
   height: 1.5rem;
 `;
-
-//   input:checked + .slider {
-//     background-color: ${({ theme }) => theme.background};
-//   }
