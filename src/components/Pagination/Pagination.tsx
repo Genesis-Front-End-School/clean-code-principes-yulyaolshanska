@@ -1,4 +1,4 @@
-import { FIRST_PAGE } from "constants/pagination";
+import { FIRST_PAGE } from "../../constants/pagination";
 import React, { useState } from "react";
 import {
   PaginationButton,
@@ -16,13 +16,13 @@ export const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handlePrevClick = () => {
+  const handlePrevClick = (): void => {
     setCurrentPage(currentPage - 1);
     onPaginationClick(currentPage - 1);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = (): void => {
     setCurrentPage(currentPage + 1);
     onPaginationClick(currentPage + 1);
     window.scrollTo({ top: 0, behavior: "smooth" });

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { MdArrowBackIos } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
-import theme from "styles/theme";
+import theme from "../../styles/theme";
 
 interface LessonTitleProps extends React.HTMLProps<HTMLHeadingElement> {
   active?: boolean;
