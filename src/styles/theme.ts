@@ -1,6 +1,5 @@
 import { ThemeProps } from "types/type";
 
-// };
 export const lightTheme: ThemeProps = {
   colors: {
     body: "#FFF",
@@ -32,14 +31,12 @@ export const darkTheme: ThemeProps = {
     background: "#6648c8",
     backdrop: "#11111199",
     accent: "#906eff",
-    // text: "#a38bf3",
-    text: "    #d4c9fdf2",
+    text: "#d4c9fdf2",
     title: "#6648c8",
     subTitle: "#4fd4ce",
     cardShadow1: "rgb(193 208 242 / 12%)",
     cardShadow2: "rgb(150 181 255 / 12%)",
     primaryText: "#7449ff;",
-
     primaryBtnText: "#111111",
     secondatyBtnText: "#FFFFFF",
     hoverBtn: "#FF6101",
