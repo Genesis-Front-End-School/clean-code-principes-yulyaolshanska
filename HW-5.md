@@ -22,5 +22,3 @@ Is responsible for requests to the server and saving data, it is redax, api and 
 
 <img src="./public/hw-5.png" title="Layer schema" alt="Layer schema" width="100"
   />
-
-  <!-- width="100"  height="100" -->

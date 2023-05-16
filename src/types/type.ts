@@ -42,26 +42,8 @@ export interface LessonseDetails {
 }
 
 export interface ThemeProps {
-  colors: {
-    body: string;
-    background: string;
-    text: string;
-    backdrop: string;
-    accent: string;
-    title: string;
-    cardShadow1: string;
-    cardShadow2: string;
-    primaryText: string;
-    primaryBtnText: string;
-    secondatyBtnText: string;
-    hoverBtn: string;
-  };
-  media: {
-    mobile: string;
-    mobileM: string;
-    tablet: string;
-    desktop: string;
-  };
+  colors: Record<string, string>;
+  media: Record<string, string>;
 }
 
 export type GlobalThemeProps = {

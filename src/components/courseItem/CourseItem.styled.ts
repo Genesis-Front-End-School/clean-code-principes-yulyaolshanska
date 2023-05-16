@@ -4,6 +4,7 @@ import { GlobalThemeProps } from "types/type";
 export const Card = styled.li`
   border-radius: 16px;
   width: 340px;
+  height: 440px;
   overflow: hidden;
   box-shadow: ${({ theme }: GlobalThemeProps) =>
     `${theme.colors.cardShadow1} 0px 8px 18px -6px, ${theme.colors.cardShadow2} 0px 12px 42px -4px  
@@ -14,13 +15,39 @@ export const Card = styled.li`
   &:focus {
     transform: scale(1.03);
   }
-  @media ${(p) => p.theme.media.tablet} {
-    flex-basis: calc(33.33% - 24);
+
+  @media ${(p) => p.theme.media.mobileM} {
+    margin-bottom: 32px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1060px) {
+    &:not(:nth-child(2n)) {
+      margin-right: 30px;
+    }
+    &:not(:nth-last-child(-n + 2)) {
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (min-width: 1060px) and (max-width: 1419px) {
+    &:not(:nth-child(3n + 3)) {
+      margin-right: 20px;
+    }
+    &:not(:nth-last-child(-n + 3)) {
+      margin-bottom: 20px;
+    }
+  }
+  @media ${(p) => p.theme.media.desktopM} {
+    &:not(:nth-child(4n)) {
+      margin-right: 20px;
+    }
+    &:not(:nth-last-child(-n + 4)) {
+      margin-bottom: 20px;
+    }
   }
 `;
 
 export const DetailsBox = styled.div`
   padding: 10px;
+
   @media ${(p) => p.theme.media.tablet} {
     padding: 20px;
   }
@@ -45,6 +72,7 @@ export const CourseImg = styled.img`
   width: 320px;
   height: 160px;
   object-fit: cover;
+
   @media screen and (min-width: 480px) {
     width: 348px;
     height: 160px;
@@ -73,7 +101,7 @@ export const SkillsList = styled.ul`
 export const SkillItem = styled.li`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: space-around;
   padding-left: 24px;
   margin-bottom: 6px;
   display: list-item;
@@ -102,6 +130,7 @@ export const TagItem = styled.p`
   font-size: 12px;
   color: #e74c3c;
   border-radius: 5px;
+
   @media screen and (min-width: 1280px) {
     padding: 4px 8px;
     font-size: 14px;

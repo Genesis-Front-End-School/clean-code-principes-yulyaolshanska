@@ -28,10 +28,13 @@ export const GlobalStyle = createGlobalStyle`
   h3,
   h4,
   h5,
-  h6,
+  h6{   
+     margin: 0;
+    color:${({ theme }: GlobalThemeProps) => theme.colors.accent};
+}
   p {
     margin: 0;
-    color:${({ theme }: GlobalThemeProps) => theme.colors.text};
+    color:${({ theme }: GlobalThemeProps) => theme.colors.subTitle};
   }
   
   a {
