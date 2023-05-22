@@ -6,8 +6,8 @@ import dts from "vite-plugin-dts";
 import EsLint from "vite-plugin-linter";
 import tsConfigPaths from "vite-tsconfig-paths";
 const { EsLinter, linterPlugin } = EsLint;
-import * as packageJson from "./package.json";
-// https://vitejs.dev/config/
+// import * as packageJson from "./package.json";
+
 export default defineConfig((configEnv) => ({
   plugins: [
     react(),
@@ -25,10 +25,16 @@ export default defineConfig((configEnv) => ({
       entry: resolve(__dirname, "./src/lib/index.ts"),
       name: "GenesisComponentsLibrary",
       formats: ["es", "umd"],
-      fileName: (format) => `genesis-components-library.${format}.js`,
+      fileName: (format) => `gen-fs-courses.${format}.js`,
     },
     rollupOptions: {
-      external: [...Object.keys(packageJson.peerDependencies)],
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "react",
+          "react-dom": "ReactDom",
+        },
+      },
     },
   },
 }));
