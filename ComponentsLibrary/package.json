@@ -1,5 +1,5 @@
 {
-  "name": "componentslibrary",
+  "name": "gen-fs-courses",
   "private": false,
   "version": "0.0.0",
   "type": "module",
@@ -70,7 +70,7 @@
     "type": "git",
     "url": "https://github.com/Genesis-Front-End-School/clean-code-principes-yulyaolshanska"
   },
-  "keywords": [],
+  "keywords": ["gen-fs"],
   "author": "julia olshanska",
   "bugs": {
   },
