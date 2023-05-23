@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeContext, ThemeProvider } from "styled-components";
 import { GlobalStyle } from "styles/globalStyle";
 import { darkTheme, lightTheme } from "styles/theme";
-import Loader from "./Loader/Loader";
+import { Loader } from "gen-fs-courses";
 
 const NotFoundPage = lazy(() => import("../pages/notFoundPage/NotFoundPage"));
 const Layout = lazy(() => import("../components/Layout/Layout"));

@@ -9,7 +9,7 @@ import {
   VideoContainer,
 } from "./CourseDetailsPage.styled";
 import VideoPlayer from "components/VideoPlayer/VideoPlayer";
-import LessonsList from "components/LessonsList/LessonsList";
+import { LessonsList } from "gen-fs-courses";
 import { LOCKED } from "constants/other";
 import { LessonseDetails } from "types/type";
 

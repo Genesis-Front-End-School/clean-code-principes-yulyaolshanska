@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useGetTokenQuery } from "redux/auth/authApi";
 import { setToken } from "redux/auth/authSlice";
 import { coursesApi } from "redux/coursesApi";
-import Loader from "components/Loader/Loader";
+import { Loader } from "gen-fs-courses";
 import { ICourse } from "types/type";
 
 const CoursesPage: React.FC = () => {

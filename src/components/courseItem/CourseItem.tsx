@@ -30,7 +30,7 @@ interface CourseProps {
   image: string;
 }
 
-export const CourseItem: React.FC<CourseProps> = ({
+const CourseItem: React.FC<CourseProps> = ({
   courseId,
   lessonsCount,
   rating,
@@ -68,3 +68,5 @@ export const CourseItem: React.FC<CourseProps> = ({
     </Card>
   );
 };
+
+export default CourseItem;
