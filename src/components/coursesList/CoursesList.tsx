@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { CourseItem } from "components/CourseItem/CourseItem";
+import { Pagination } from "gen-fs-courses";
+import CourseItem from "components/CourseItem/CourseItem";
 import { CourseList, Title } from "./CoursesList.styled";
-import { Pagination } from "components/Pagination/Pagination";
 import { COURSES_PER_PAGE } from "constants/pagination";
 import { ICourse } from "types/type";
 

@@ -1,7 +1,7 @@
-import TogglerButton from "components/ThemeTogglerButton/ThemeTogglerButton";
-import useThemeMode from "helpers/hooks/useThemeMode";
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { TogglerButton } from "gen-fs-courses";
+import useThemeMode from "helpers/hooks/useThemeMode";
 import { Container } from "./Layout.styled";
 
 const Layout: React.FC = () => {
