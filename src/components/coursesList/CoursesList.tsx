@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { CourseItem } from "components/CourseItem/CourseItem";
+import CourseItem from "components/CourseItem/CourseItem";
 import { CourseList, Title } from "./CoursesList.styled";
-import { Pagination } from "components/Pagination/Pagination";
+import Pagination from "components/Pagination/Pagination";
 import { COURSES_PER_PAGE } from "constants/pagination";
 import { ICourse } from "types/type";
 
@@ -9,7 +9,7 @@ interface CoursesListProps {
   courses: ICourse[];
 }
 
-export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
+const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCourses, setCurrentCourses] = useState<ICourse[]>([]);
 
@@ -66,3 +66,5 @@ export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
     </>
   );
 };
+
+export default CoursesList;

@@ -10,7 +10,7 @@ interface PaginationProps {
   onPaginationClick: (pageNumber: number) => void;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({
+const Pagination: React.FC<PaginationProps> = ({
   totalPageCount,
   onPaginationClick,
 }) => {
@@ -49,3 +49,5 @@ export const Pagination: React.FC<PaginationProps> = ({
     </PaginationButtonContainer>
   );
 };
+
+export default Pagination;

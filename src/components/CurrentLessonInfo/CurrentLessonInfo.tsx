@@ -11,10 +11,7 @@ interface ICurrentLessonInfo {
   status: string;
 }
 
-export const CurrentLessonInfo: React.FC<ICurrentLessonInfo> = ({
-  title,
-  status,
-}) => {
+const CurrentLessonInfo: React.FC<ICurrentLessonInfo> = ({ title, status }) => {
   return (
     <>
       <CurrentLessContainer>
@@ -30,3 +27,5 @@ export const CurrentLessonInfo: React.FC<ICurrentLessonInfo> = ({
     </>
   );
 };
+
+export default CurrentLessonInfo;

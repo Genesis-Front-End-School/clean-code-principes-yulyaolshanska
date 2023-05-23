@@ -1,8 +1,8 @@
 import React from "react";
 import { CourseLessonsList, Title } from "./LessonsList.styled";
 import { ILesson, LessonseDetails } from "types/type";
-import { CurrentLessonInfo } from "components/CurrentLessonInfo/CurrentLessonInfo";
-import { LessonItem } from "components/LessonItem/LessonItem";
+import CurrentLessonInfo from "components/CurrentLessonInfo/CurrentLessonInfo";
+import LessonItem from "components/LessonItem/LessonItem";
 
 interface ILessonsListProps {
   lessons?: ILesson[];

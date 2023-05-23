@@ -10,7 +10,7 @@ interface ILessonItem {
   lesson: ILesson;
 }
 
-export const LessonItem: React.FC<ILessonItem> = ({
+const LessonItem: React.FC<ILessonItem> = ({
   handleLessonClick,
   currentLessonId,
   lesson,
@@ -26,3 +26,5 @@ export const LessonItem: React.FC<ILessonItem> = ({
     </CourseLesson>
   );
 };
+
+export default LessonItem;
