@@ -2,8 +2,11 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
-import babel from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss";
+import sourcemaps from "rollup-plugin-sourcemaps";
+import sucrase from "@rollup/plugin-sucrase";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import terser from "@rollup/plugin-terser";
 import packageJson from "./package.json" assert { type: "json" };
 
 export default [
@@ -23,15 +26,17 @@ export default [
       },
     ],
     plugins: [
+      peerDepsExternal(),
       resolve(),
+      sourcemaps(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      babel({
-        babelHelpers: "bundled",
-        extensions: [".ts", ".tsx"],
-        presets: ["@babel/preset-react"],
-      }),
       postcss({ modules: true }),
+      terser(),
+      sucrase({
+        exclude: ["node_modules/**"],
+        transforms: ["typescript", "jsx"],
+      }),
     ],
   },
   {
