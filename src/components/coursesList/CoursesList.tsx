@@ -66,3 +66,4 @@ export const CoursesList: React.FC<CoursesListProps> = ({ courses }) => {
     </>
   );
 };
+//
