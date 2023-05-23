@@ -3,6 +3,7 @@
 .idea/
 
 # dependencies
+dist
 /node_modules
 /.pnp
 .pnp.js
